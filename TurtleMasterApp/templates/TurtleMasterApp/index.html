@@ -1,0 +1,108 @@
+{% extends "TurtleMasterApp/base.html" %}
+{% block content %}
+<script type='text/javascript'>
+  var topline_json = {{ json_topline | safe}};
+  var us_satistics_json = {{ json_us_statistics | safe}};
+  var world_statistics_json = {{ json_world_statistics | safe}};
+  var time_series_us_json = {{ json_time_series_us | safe}};
+  alert("Please Remember to stay home and stay safe during these troubeling times. It's important not to get infected for your lives and many others lives are at stake. Please wash you hands often using soap and water. Thank You from the TurtleMaster Team.")
+</script>
+<div id="app">
+  <div id="banner" calss="head">
+    <h1>Welcome to TurtleMaster</h1>
+    
+    {% load static %}
+    <img src="{% static 'TurtleMasterApp/LMC_Logo.jpg' %}" alt="Little Master's Club Logo" width="50px" height="50px"
+      class="LMC_Logo">
+    <img src="{% static 'TurtleMasterApp/TurtleMaster_Logo.jpg' %}" alt="TurtleMaster Logo" width="50px" height="50px"
+      class="TM_Logo">
+    <nav>
+      <a href="history.html">Home</a>
+      <a href="history.html" class="active">Info</a>
+      <a href="history.html">About Us</a>
+      <a href="history.html">Websites on Covid-19</a>
+      <a href="history.html">Videos</a>
+    </nav>
+  </div>
+  <div id="topline">
+    <table>
+      <tr v-for="record in topline_json">
+        <td>[[ record.country_region ]]-</td>
+        <td>confirmed [[record.confirmed]],</td>
+        <td>deaths [[record.deaths]], </td>
+        <td>recovered [[record.recovered]]</td>
+        <td>Last Update [[record.last_update]]</td>
+      </tr>
+    </table>
+    <table>
+      <tr v-for="record in time_series_us_json">
+        <td>[[ record.country_region ]]-</td>
+        <td>state [[record.province_state]],</td>
+        <td>confirmed [[record.confirmed]],</td>
+        <td>deaths [[record.deaths]], </td>
+        <td>Last Update [[record.last_update]]</td>
+      </tr>
+    </table>
+  </div>
+  <div id="data-list">
+    <table>
+      <tr>
+        <th class="th">Location</th>
+        <th class="th">Confirmed</th>
+        <th class="th">Deaths</th>
+        <th class="th">Recovered</th>
+        <th class="th">Last Update</th>
+      </tr>
+      <tr>
+        <th>US</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+      <tr v-for="record in us_satistics_json">
+        <td>[[ record.province_state ]]-</td>
+        <td>confirmed [[record.confirmed]],</td>
+        <td>deaths [[record.deaths]], </td>
+        <td>recovered [[record.recovered]]</td>
+        <td>Last Update [[record.last_update]]</td>
+      </tr>
+      <tr>
+        <th>World</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </tr>
+      <tr v-for="record in world_statistics_json">
+        <td>[[ record.country_region ]]-[[ record.province_state ]]-</td>
+        <td>confirmed [[record.confirmed]],</td>
+        <td>deaths [[record.deaths]], </td>
+        <td>recovered [[record.last_update]]</td>
+        <td>Last Update [[record.last_update]]</td>
+      </tr>
+    </table>
+  </div>
+  <div id="information-hub">
+
+  </div>
+  <div id="post">
+  </div>
+  <div id="footer">
+    <p>
+
+
+    </p>
+    <p><a href="https://www.youtube.com/watch?v=n6QwnzbRUyA" target = "blank">Click here to learn how to lower your risk of getting covid.</a></p>
+    <p><a href="https://www.youtube.com/watch?v=FVIGhz3uwuQ" target = "blank">Click here to learn covid vs the flu.</a></p>
+    <p><a href="https://www.youtube.com/watch?v=r6ewlQs8CAQ" target = "blank">Click here to learn what the US did wrong about testing covid.</a></p>
+    <p><a href="https://www.youtube.com/watch?v=-LKVUarhtvE" target = "blank">Click here to learn about soap vs covid.</a></p>
+    <p><a href="https://www.youtube.com/watch?v=O-3Mlj3MQ_Q" target = "blank">Click here to learn about covid charts misleading us.</a></p>
+    <p><a href="https://www.youtube.com/watch?v=421fmflQX0E" target = "blank">Click here to learn about the look of covid</a></p>
+    <p><a href="https://www.youtube.com/watch?v=v_kq8_Z4LXQ" target = "blank">Click here to learn about the symptoms</a></p>
+    <footer>By Lingyuan, Samuel, Florence</footer>
+  </div>
+</div>
+
+<script src="{% static 'TurtleMasterApp/TurtleMaster.js' %}"></script>
+{% endblock %}
