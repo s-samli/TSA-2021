@@ -1,7 +1,0 @@
-venv_t
-.vscode
-*__pycache__*
-*.sock
-/static/
-venv*/
-*.swp
